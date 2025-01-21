@@ -1,7 +1,6 @@
 package services
 
 import (
-	"errors"
 	"sync"
 
 	"github.com/andrew-pisotskyi/clario-weather-cli/internal/domain"
@@ -49,7 +48,7 @@ func (ws *WeatherService) GetFastestWeather(country, city string) (domain.Weathe
 				failedProviders++
 			}
 			if failedProviders == len(ws.Providers) {
-				return domain.Weather{}, errors.New("all providers failed")
+				return domain.Weather{}, domain.ErrAllProvidesFailed
 			}
 		}
 	}
