@@ -19,7 +19,6 @@ type weatherStackResponse struct {
 	Current struct {
 		Temp      float64  `json:"temperature"`
 		Condition []string `json:"weather_descriptions"`
-		WindSpeed float64  `json:"wind_speed"`
 	} `json:"current"`
 }
 
@@ -51,7 +50,6 @@ func (ws *WeatherStack) GetWeather(country, city string) (domain.Weather, error)
 	return domain.Weather{
 		Temperature: weatherData.Current.Temp,
 		Condition:   weatherData.Current.Condition[0],
-		WindSpeed:   weatherData.Current.WindSpeed,
 		Provider:    "WeatherStack",
 	}, nil
 }

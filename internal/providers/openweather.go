@@ -30,9 +30,6 @@ type openWeatherResponse struct {
 	Weather []struct {
 		Description string `json:"description"`
 	} `json:"weather"`
-	Wind struct {
-		Speed float64 `json:"speed"`
-	} `json:"wind"`
 }
 
 // GetWeather requests weather data from the Open Weather Map API
@@ -55,7 +52,6 @@ func (ow *OpenWeather) GetWeather(country, city string) (domain.Weather, error) 
 	return domain.Weather{
 		Temperature: weatherData.Main.Temp,
 		Condition:   weatherData.Weather[0].Description,
-		WindSpeed:   weatherData.Wind.Speed,
 		Provider:    "OpenWeatherMap",
 	}, nil
 }

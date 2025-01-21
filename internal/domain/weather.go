@@ -4,7 +4,6 @@ package domain
 type Weather struct {
 	Temperature float64
 	Condition   string
-	WindSpeed   float64
 	Provider    string
 }
 
