@@ -5,7 +5,7 @@ BUILD_DIR := build
 
 build:
 	@echo "==> Building $(APP_NAME)..."
-	go build -o $(BUILD_DIR)/$(APP_NAME) ./cmd/weather_cli
+	go build -o $(BUILD_DIR)/$(APP_NAME) ./cmd/weather-cli
 
 run: build
 	@echo "==> Running $(APP_NAME)..."
