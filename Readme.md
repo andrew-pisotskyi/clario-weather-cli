@@ -11,6 +11,8 @@ Basic ideas: separation of levels of logic, clear interfaces, dependencies direc
 
 The project does not use any dependencies, even the mocks for the tests are self-created because the project is simple and small.
 
+Go version 1.23.2.
+
 ## Getting Started
 1. Build the project:
 
