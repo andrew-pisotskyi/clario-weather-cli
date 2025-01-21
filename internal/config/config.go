@@ -3,21 +3,32 @@ package config
 import (
 	"log"
 	"os"
+	"time"
 )
 
 // Config contains the configuration of the application package
-type Config struct {
-	OpenWeatherAPIKey  string
-	WeatherAPIKey      string
-	WeatherStackAPIKey string
-}
+type (
+	Config struct {
+		ProvidersKeys *ProvidersKeys
+		HTTPTimeout   time.Duration
+	}
+
+	ProvidersKeys struct {
+		OpenWeatherAPIKey  string
+		WeatherAPIKey      string
+		WeatherStackAPIKey string
+	}
+)
 
 // NewConfig creates a new Config instance
 func NewConfig() *Config {
 	return &Config{
-		OpenWeatherAPIKey:  getEnv("OPEN_WEATHER_API_KEY", "86a199875f05dbcb2e6966fbb2aaa104"),
-		WeatherAPIKey:      getEnv("WEATHER_API_KEY", "cdc49270f649408980e152042252001"),
-		WeatherStackAPIKey: getEnv("WEATHER_STACK_API_KEY", "12caa2d7377313095708134f261e933f"),
+		ProvidersKeys: &ProvidersKeys{
+			OpenWeatherAPIKey:  getEnv("OPEN_WEATHER_API_KEY", "86a199875f05dbcb2e6966fbb2aaa104"),
+			WeatherAPIKey:      getEnv("WEATHER_API_KEY", "cdc49270f649408980e152042252001"),
+			WeatherStackAPIKey: getEnv("WEATHER_STACK_API_KEY", "12caa2d7377313095708134f261e933f"),
+		},
+		HTTPTimeout: 10 * time.Second,
 	}
 }
 

@@ -29,7 +29,6 @@ type weatherApiResponse struct {
 		Condition struct {
 			Text string `json:"text"`
 		} `json:"condition"`
-		Wind float64 `json:"wind_kph"`
 	} `json:"current"`
 }
 
@@ -53,7 +52,6 @@ func (w *WeatherApi) GetWeather(country, city string) (domain.Weather, error) {
 	return domain.Weather{
 		Temperature: weatherData.Current.Temp,
 		Condition:   weatherData.Current.Condition.Text,
-		WindSpeed:   weatherData.Current.Wind,
 		Provider:    "WeatherAPI",
 	}, nil
 }
