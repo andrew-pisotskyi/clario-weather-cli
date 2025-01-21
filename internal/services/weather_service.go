@@ -17,7 +17,7 @@ func NewWeatherService(providers []domain.WeatherProvider) *WeatherService {
 
 func (ws *WeatherService) GetFastestWeather(country, city string) (domain.Weather, error) {
 	var wg sync.WaitGroup
-	result := make(chan domain.Weather, 3)
+	result := make(chan domain.Weather, len(ws.Providers))
 	errorChan := make(chan error, len(ws.Providers))
 
 	for _, provider := range ws.Providers {
