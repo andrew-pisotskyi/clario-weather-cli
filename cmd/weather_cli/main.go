@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/andrew-pisotskyi/clario-weather-cli/internal/config"
+)
 
 func main() {
-	fmt.Println("Hello, Clario!")
+	cfg := config.NewConfig()
+	fmt.Println("cfg ", cfg)
 }
